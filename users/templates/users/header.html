@@ -1,0 +1,68 @@
+
+{% load static %}
+
+<header class="py-3 mb-3 border-bottom">
+
+    
+        <div id='headerApp'
+         class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
+        
+        </div>
+    </div>
+
+
+    <script type='module' >
+        import headerApp from  "{% static 'FlooChat/components/headerComponent.js' %}"
+        
+        const headerComp = headerApp()
+
+    </script>
+    <style>
+        .search-result-panel {
+            position: absolute;
+            top: 60px;
+            /* Adjust as per your search bar's height */
+            left: 0;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    
+        .search-result-panel ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+    
+        .search-result-panel ul li {
+            margin-bottom: 10px;
+            padding: 5px;
+            cursor: pointer;
+        }
+    
+        .search-result-panel ul li:hover {
+            background-color: #f0f0f0;
+        }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown {
+  margin-right: 1rem;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+}
+
+    </style>
+</header>

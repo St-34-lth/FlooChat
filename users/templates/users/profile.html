@@ -1,0 +1,59 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block content %}
+
+
+<div id="profileApp" class="container mt-5">
+  
+
+</div>
+
+<script type="module" defer>
+ import profileApp from   "{% static 'FlooChat/components/profileComponent.js' %}" 
+import { commentPost, createPost, profileDisplay, friendsDisplay, postDisplay, albumsList } from "{% static 'FlooChat/components/components.js' %}"
+    import { callers } from "{% static 'FlooChat/components/callers.js' %}"
+
+    Vue.mixin({ methods: callers })
+    const app = profileApp()
+
+   
+</script>
+<style>
+    #friendsContainer {
+        max-height: 400px; 
+        overflow-y: auto;
+    }
+    <style>
+  .list-group-item {
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  .btn {
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  .text-primary {
+    color: #6200ea !important;
+  }
+
+  h4 {
+    font-weight: 500;
+  }
+
+  a.text-dark {
+    color: #6200ea !important;
+  }
+
+  .btn-secondary {
+    background-color: #018786 !important;
+  }
+
+  .btn-danger {
+    background-color: #d32f2f !important;
+  }
+</style>
+
+
+{% endblock %}

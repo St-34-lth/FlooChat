@@ -1,0 +1,73 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">New FlooChat user registration</h2>
+    <form id="registrationForm">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="id_username">Username:</label>
+            <input type="text" name="username" maxlength="150" autofocus required id="id_username" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="id_email">Email:</label>
+            <input type="text" name="email" maxlength="30" required id="id_email" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="id_first_name">First Name:</label>
+            <input type="text" name="first_name" maxlength="30" required id="id_first_name" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="id_last_name">Last Name:</label>
+            <input type="text" name="last_name" maxlength="150" required id="id_last_name" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="id_password1">Password:</label>
+            <input type="password" name="password1" required id="id_password1" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="id_password2">Confirm Password:</label>
+            <input type="password" name="password2" required id="id_password2" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="id_profile_pic">Profile Photo:</label>
+            <input type="file" name="profile_pic" required id="id_profile_pic" class="form-control">
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="submitForm()">Register</button>
+    
+    </form>
+</div>
+
+<!-- <script src="{% static 'FlooChat/js/axios.min.js' %}" defer></script> -->
+   
+<script>
+    function submitForm() {
+        const formData = new FormData(document.getElementById('registrationForm'));
+        axios({
+            method: 'post',
+            url: '/api/register/',
+            data: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+        .then(response => {
+            if (response.status === 200 || response.status === 201) {
+                // handle success, like redirecting to another page
+                window.location.href = '{% url "home" %}';
+            }
+        })
+        .catch(error => {
+            // handle error, for example, showing an error message
+            console.error(error);
+        });
+    }
+</script>
+{% endblock %}

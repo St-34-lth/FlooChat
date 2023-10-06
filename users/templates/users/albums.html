@@ -1,0 +1,23 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block content %}
+
+
+<div id='albumApp' class="container mt-5">
+
+    </div>
+    
+  
+
+    <script type='module' >
+    import albumApp from "{% static 'FlooChat/components/albumComponent.js' %}" 
+    import { photosList } from "{% static 'FlooChat/components/components.js' %}"
+    import { callers } from "{% static 'FlooChat/components/callers.js' %}"
+
+    //     Vue.mixin({ methods: callers })
+    // const app = albumApp() 
+
+
+    
+    </script>
+{% endblock %}

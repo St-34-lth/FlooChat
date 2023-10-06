@@ -1,0 +1,59 @@
+{% extends "users/base.html" %}
+
+{% block title %}Chat Home{% endblock %}
+
+{% block content %}
+    <div id="chat-home">
+        <h2>Chats</h2>
+        <p>Search for chat rooms</p>
+    </div>
+    <div id='roomApp' class='row'>
+    <div class='col md-12'>
+
+<input ref="roomInput" v-model='roomName' type='text' size='100' @keyup.enter="onRoomInput"> 
+<br>
+<br>
+<input @click='onRoomInput' type='button' value='Enter'>
+    </div> 
+    
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded",() => {
+            axios.defaults.headers.common[ 'X-CSRFToken' ] = '{{ csrf_token }}';
+
+            
+            const roomApp = new Vue({
+                el: '#roomApp',
+                  delimiters: 
+                    [
+                     '${', '}' 
+                    ], 
+                data: 
+                {
+                    roomName : ''
+                },
+                methods: {
+                    onRoomInput(e) 
+                    {
+                       
+                        window.location.pathname = `/chat/${encodeURIComponent(this.roomName)}/`
+                    },
+                 
+              
+                   
+                
+                },
+                mounted() 
+                {
+                     this.$refs.roomInput.focus();
+
+                    
+                }
+            });
+        })
+    
+    
+     </script>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Login</div>
+                <div class="card-body">
+<form id='loginForm' method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" autofocus required id="id_username" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="id_password">Password:</label>
+        <input type="password" name="password" required id="id_password" class="form-control">
+    </div>
+    <div class="form-group">
+        <button action="" type="submit" class="btn btn-primary">Login</button>
+    </div>
+</form>
+
+
+<div class="row">
+    <div class="'col-md-12" type="hidden" id="errorMessage">
+        <p></p>
+    </div>
+
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        axios.defaults.headers.post[ 'X-CSRFToken' ] = '{{ csrf_token }}';
+
+        const formData = new FormData(event.target);
+        axios.post('/api/login/', {
+            username: formData.get("username"),
+            password: formData.get("password")
+        })
+            .then(function (response) {
+                if (response.data.redirect) {
+                    console.log(response.data.redirect)
+                    window.location.href = response.data.redirect;
+                }
+            })
+            .catch(function (error) {
+                if (error.response && error.response.data.error) {
+                    document.getElementById("errorMessage").textContent = error.response.data.error;
+                   
+                } else {
+                    document.getElementById("errorMessage").textContent = "An unknown error occurred.";
+                }
+            });
+    });
+</script>
+
+{% endblock %}
+
+
+ 

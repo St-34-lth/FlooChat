@@ -1,0 +1,21 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block title %}Chat Home{% endblock %}
+
+{% block content %}
+
+    <div id="chat-home">
+        <h2>Chats</h2>
+        <p>Search for chat rooms</p>
+    </div>
+    <div id='userChatApp'>
+    </div> 
+    
+    
+
+ <script type='module'>
+  import userChatApp from  "{% static 'FlooChat/components/roomComponent.js' %}"
+     const chatComp = userChatApp()
+     </script>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block content %}
+
+<div id='photoApp' class="container mt-5">
+
+
+</div>
+
+
+<script  type="module">
+  import photoApp  from "{% static 'FlooChat/components/photoComponent.js' %}"
+    const photoComp = photoApp()
+</script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<main class="container mt-5">
+    <div id='feedApp' class="row">
+
+</div>
+</main>
+<script type="module">
+
+import feedApp from "{% static 'FlooChat/components/feedComponent.js' %}" 
+
+
+import { commentPost, createPost, profileDisplay, friendsDisplay, postDisplay, photosList } from "{% static 'FlooChat/components/components.js' %}"
+import { callers } from "{% static 'FlooChat/components/callers.js' %}"
+    
+Vue.mixin({methods: callers })
+const feedComp = feedApp()
+
+
+
+</script>
+{% endblock %}
