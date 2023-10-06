@@ -1,0 +1,57 @@
+1. Check validation for default_profile picture 
+--
+2. re write all tests and start tdd 
+--
+3. Integrate Vue instead of CDN 
+
+4. create tasks for async ops 
+
+5. search function 
+maybe with a search function ? 
+
+
+
+6. set redis password before deployment
+
+7.set celery to work on testdb ?
+
+8. fix friendship callers 
+unpack userdata from the request object check for users validate etc? 
+ok
+9.Make all db queries create async ?
+awd
+10. Posts 
+ok
+11. Chat window 
+ok - make it a slide panel on the bottom ? 
+
+12.Open api 
+ok
+
+13. Show posts and home page for each user 
+check 
+
+14. restrict access to users viewing other user profiles
+check 
+15.  modify  normal user view for permission classes??? 
+
+16. tidy up profileComponent authentication process for current user 
+
+17.refactor login and register views in components 
+
+18. implement a game ??
+
+19. comments on user posts 
+check
+check
+use websockets to maintain refreshed feed? 
+
+20. Profile -> settings user can edit 
+
+21. Home -> page of the user including his posts etc 
+ok
+22. feed -> page where friends see everyones posts etc 
+
+23. Header if user not logged in change the navbar links 
+
+24.
